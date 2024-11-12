@@ -1,6 +1,3 @@
--- actual implementation (janky) of the protocol
--- we are only considering single file torrents for now, 
--- if time permits we will try multi-file torrents
 {-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
 {-# HLINT ignore "Use camelCase" #-}
 {-# LANGUAGE OverloadedStrings #-}
