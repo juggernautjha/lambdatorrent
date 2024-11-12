@@ -70,6 +70,66 @@
   (major1) == 0 && (major2) <  11 || \
   (major1) == 0 && (major2) == 11 && (minor) <= 9)
 #endif /* MIN_VERSION_cryptohash */
+/* package crypton-connection-0.4.2 */
+#ifndef VERSION_crypton_connection
+#define VERSION_crypton_connection "0.4.2"
+#endif /* VERSION_crypton_connection */
+#ifndef MIN_VERSION_crypton_connection
+#define MIN_VERSION_crypton_connection(major1,major2,minor) (\
+  (major1) <  0 || \
+  (major1) == 0 && (major2) <  4 || \
+  (major1) == 0 && (major2) == 4 && (minor) <= 2)
+#endif /* MIN_VERSION_crypton_connection */
+/* package data-default-0.8.0.0 */
+#ifndef VERSION_data_default
+#define VERSION_data_default "0.8.0.0"
+#endif /* VERSION_data_default */
+#ifndef MIN_VERSION_data_default
+#define MIN_VERSION_data_default(major1,major2,minor) (\
+  (major1) <  0 || \
+  (major1) == 0 && (major2) <  8 || \
+  (major1) == 0 && (major2) == 8 && (minor) <= 0)
+#endif /* MIN_VERSION_data_default */
+/* package data-default-class-0.2.0.0 */
+#ifndef VERSION_data_default_class
+#define VERSION_data_default_class "0.2.0.0"
+#endif /* VERSION_data_default_class */
+#ifndef MIN_VERSION_data_default_class
+#define MIN_VERSION_data_default_class(major1,major2,minor) (\
+  (major1) <  0 || \
+  (major1) == 0 && (major2) <  2 || \
+  (major1) == 0 && (major2) == 2 && (minor) <= 0)
+#endif /* MIN_VERSION_data_default_class */
+/* package http-client-0.7.17 */
+#ifndef VERSION_http_client
+#define VERSION_http_client "0.7.17"
+#endif /* VERSION_http_client */
+#ifndef MIN_VERSION_http_client
+#define MIN_VERSION_http_client(major1,major2,minor) (\
+  (major1) <  0 || \
+  (major1) == 0 && (major2) <  7 || \
+  (major1) == 0 && (major2) == 7 && (minor) <= 17)
+#endif /* MIN_VERSION_http_client */
+/* package http-client-tls-0.3.6.4 */
+#ifndef VERSION_http_client_tls
+#define VERSION_http_client_tls "0.3.6.4"
+#endif /* VERSION_http_client_tls */
+#ifndef MIN_VERSION_http_client_tls
+#define MIN_VERSION_http_client_tls(major1,major2,minor) (\
+  (major1) <  0 || \
+  (major1) == 0 && (major2) <  3 || \
+  (major1) == 0 && (major2) == 3 && (minor) <= 6)
+#endif /* MIN_VERSION_http_client_tls */
+/* package http-conduit-2.3.9.1 */
+#ifndef VERSION_http_conduit
+#define VERSION_http_conduit "2.3.9.1"
+#endif /* VERSION_http_conduit */
+#ifndef MIN_VERSION_http_conduit
+#define MIN_VERSION_http_conduit(major1,major2,minor) (\
+  (major1) <  2 || \
+  (major1) == 2 && (major2) <  3 || \
+  (major1) == 2 && (major2) == 3 && (minor) <= 9)
+#endif /* MIN_VERSION_http_conduit */
 /* package lens-5.3.2 */
 #ifndef VERSION_lens
 #define VERSION_lens "5.3.2"
@@ -80,6 +140,26 @@
   (major1) == 5 && (major2) <  3 || \
   (major1) == 5 && (major2) == 3 && (minor) <= 2)
 #endif /* MIN_VERSION_lens */
+/* package req-3.13.4 */
+#ifndef VERSION_req
+#define VERSION_req "3.13.4"
+#endif /* VERSION_req */
+#ifndef MIN_VERSION_req
+#define MIN_VERSION_req(major1,major2,minor) (\
+  (major1) <  3 || \
+  (major1) == 3 && (major2) <  13 || \
+  (major1) == 3 && (major2) == 13 && (minor) <= 4)
+#endif /* MIN_VERSION_req */
+/* package tls-2.1.4 */
+#ifndef VERSION_tls
+#define VERSION_tls "2.1.4"
+#endif /* VERSION_tls */
+#ifndef MIN_VERSION_tls
+#define MIN_VERSION_tls(major1,major2,minor) (\
+  (major1) <  2 || \
+  (major1) == 2 && (major2) <  1 || \
+  (major1) == 2 && (major2) == 1 && (minor) <= 4)
+#endif /* MIN_VERSION_tls */
 /* package uri-encode-1.5.0.7 */
 #ifndef VERSION_uri_encode
 #define VERSION_uri_encode "1.5.0.7"

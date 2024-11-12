@@ -29,17 +29,17 @@ dependencies:
 - Cabal-syntax
 - wreq
 - HTTP
+- tls
+- http-client-tls
+- http-client
+- http-conduit
+- crypton-connection
+- req
+- data-default-class
+- data-default
 
-ghc-options:
-- -Wall
-- -Wcompat
-- -Widentities
-- -Wincomplete-record-updates
-- -Wincomplete-uni-patterns
-- -Wmissing-export-lists
-- -Wmissing-home-modules
-- -Wpartial-fields
-- -Wredundant-constraints
+
+
 
 library:
   source-dirs: src
@@ -65,3 +65,4 @@ tests:
     - -with-rtsopts=-N
     dependencies:
     - lambdatorrent
+  
