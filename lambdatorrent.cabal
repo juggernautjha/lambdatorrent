@@ -1,0 +1,118 @@
+cabal-version: 2.2
+
+-- This file has been generated from package.yaml by hpack version 0.37.0.
+--
+-- see: https://github.com/sol/hpack
+
+name:           lambdatorrent
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/githubuser/lambdatorrent#readme>
+homepage:       https://github.com/juggernautjha/lambdatorrent#readme
+bug-reports:    https://github.com/juggernautjha/lambdatorrent/issues
+author:         juggernautjha
+maintainer:     juggernautjha@gmail.com
+copyright:      2024 juggernautjha
+license:        BSD-3-Clause
+build-type:     Simple
+extra-source-files:
+    README.md
+    CHANGELOG.md
+
+source-repository head
+  type: git
+  location: https://github.com/juggernautjha/lambdatorrent
+
+library
+  exposed-modules:
+      Bencode
+      Lib
+      Tracker
+  other-modules:
+      Paths_lambdatorrent
+  autogen-modules:
+      Paths_lambdatorrent
+  hs-source-dirs:
+      src
+  build-depends:
+      Cabal-syntax
+    , HTTP
+    , base >=4.7 && <5
+    , base16-bytestring
+    , bytestring
+    , cryptohash
+    , crypton-connection
+    , data-default
+    , data-default-class
+    , http-client
+    , http-client-tls
+    , http-conduit
+    , lens
+    , network
+    , req
+    , tls
+    , uri-encode
+    , wreq
+  default-language: Haskell2010
+
+executable lambdatorrent-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_lambdatorrent
+  autogen-modules:
+      Paths_lambdatorrent
+  hs-source-dirs:
+      app
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      Cabal-syntax
+    , HTTP
+    , base >=4.7 && <5
+    , base16-bytestring
+    , bytestring
+    , cryptohash
+    , crypton-connection
+    , data-default
+    , data-default-class
+    , http-client
+    , http-client-tls
+    , http-conduit
+    , lambdatorrent
+    , lens
+    , network
+    , req
+    , tls
+    , uri-encode
+    , wreq
+  default-language: Haskell2010
+
+test-suite lambdatorrent-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_lambdatorrent
+  autogen-modules:
+      Paths_lambdatorrent
+  hs-source-dirs:
+      test
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      Cabal-syntax
+    , HTTP
+    , base >=4.7 && <5
+    , base16-bytestring
+    , bytestring
+    , cryptohash
+    , crypton-connection
+    , data-default
+    , data-default-class
+    , http-client
+    , http-client-tls
+    , http-conduit
+    , lambdatorrent
+    , lens
+    , network
+    , req
+    , tls
+    , uri-encode
+    , wreq
+  default-language: Haskell2010
