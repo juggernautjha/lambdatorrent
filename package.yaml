@@ -37,6 +37,7 @@ dependencies:
 - req
 - data-default-class
 - data-default
+- network
 
 
 

@@ -26,6 +26,7 @@ library
   exposed-modules:
       Bencode
       Lib
+      Tracker
   other-modules:
       Paths_lambdatorrent
   autogen-modules:
@@ -46,6 +47,7 @@ library
     , http-client-tls
     , http-conduit
     , lens
+    , network
     , req
     , tls
     , uri-encode
@@ -76,6 +78,7 @@ executable lambdatorrent-exe
     , http-conduit
     , lambdatorrent
     , lens
+    , network
     , req
     , tls
     , uri-encode
@@ -107,6 +110,7 @@ test-suite lambdatorrent-test
     , http-conduit
     , lambdatorrent
     , lens
+    , network
     , req
     , tls
     , uri-encode

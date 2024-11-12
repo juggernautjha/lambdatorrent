@@ -140,6 +140,16 @@
   (major1) == 5 && (major2) <  3 || \
   (major1) == 5 && (major2) == 3 && (minor) <= 2)
 #endif /* MIN_VERSION_lens */
+/* package network-3.2.5.0 */
+#ifndef VERSION_network
+#define VERSION_network "3.2.5.0"
+#endif /* VERSION_network */
+#ifndef MIN_VERSION_network
+#define MIN_VERSION_network(major1,major2,minor) (\
+  (major1) <  3 || \
+  (major1) == 3 && (major2) <  2 || \
+  (major1) == 3 && (major2) == 2 && (minor) <= 5)
+#endif /* MIN_VERSION_network */
 /* package req-3.13.4 */
 #ifndef VERSION_req
 #define VERSION_req "3.13.4"

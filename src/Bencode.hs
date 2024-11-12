@@ -128,23 +128,6 @@ list_parser = do
     _ <- char_parser 'e'
     pure (BList parsed_list)
 
-
--- info_parser :: Parser Info
--- info_parser = do
---     _ <- string_parser "4:info"
---     dictContent <- Parser $ \input ->
---         let (content, rest) = break (== 'e') input
---         in if not (null rest) then Just (tail rest, content) else Nothing
---     pure (BInfo dictContent)
-    
-
-
--- ! parsing dictionaries
--- dict_convert :: [Bencode] -> [(String, Bencode)]
--- dict_convert [] = []
--- dict_convert (BBString x: y:xs) = (x, y) : dict_convert xs
--- dict_convert _ = []
-
 dict_flatten :: [(ByteString, Bencode)] -> [Bencode]
 dict_flatten [] = []
 dict_flatten (x:xs) = BBString (fst x) : snd x : dict_flatten xs
