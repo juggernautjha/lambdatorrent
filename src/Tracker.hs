@@ -1,4 +1,4 @@
--- actual implementation (janky) of the protocol
+-- actual implementation (janky) of the tracker protocol
 -- we are only considering single file torrents for now, 
 -- if time permits we will try multi-file torrents
 {-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
@@ -30,20 +30,23 @@ import Data.Word (Word16)
 import Data.Bits (shiftL, (.|.))
 
 
-
+lst_to_ip :: [Word8] -> String
+lst_to_ip [] = ""
+lst_to_ip (x:xs) = if xs == [] then (show x)  else (show x) ++ "." ++ (lst_to_ip xs)
 
 -- Function to extract the peers from the binary data
-extract_peers :: ByteString -> [([Word8], Word16)]
+extract_peers :: ByteString -> [(String, Word16)]
 extract_peers bs = go bs []
   where
     -- Process the ByteString in chunks of 6 bytes (4 for IP, 2 for Port)
-    go :: ByteString -> [([Word8], Word16)] -> [([Word8], Word16)]
+    go :: ByteString -> [(String, Word16)] -> [(String, Word16)]
     go bs peers
         | BS.length bs < 6 = reverse peers  -- End of recursion when no more peers are available
         | otherwise =
             let (ipBytes, rest) = BS.splitAt 4 bs
                 (portBytes, rest') = BS.splitAt 2 rest
-                ip =  (BS.unpack ipBytes)
+                ip =  lst_to_ip$ (BS.unpack ipBytes)
+
                 port = (fromIntegral (BS.index portBytes 0) `shiftL` 8) .|. fromIntegral (BS.index portBytes 1)  -- combine 2 bytes to form a port
             in go rest' ((ip, port) : peers)
 
@@ -119,11 +122,29 @@ ping uri = do
     pure (BL.toStrict (r ^. responseBody))
 
 
-getpeerstring :: String -> IO ByteString
+get_peer_string :: String -> IO ByteString
 -- the idea is to pipe the ping_url through ping, and then parse the resulting bytestring
-getpeerstring uri = do
+get_peer_string uri = do
     response_bs <- ping uri
     let BDict r = head $ parse_string_naive $ response_bs
     let peer_list = head $ r !!! "peers"
     let BBString peer_bs = peer_list
     pure(peer_bs)
+
+get_announce_result :: String -> IO (ByteString, Bencode, [([Char], Word16)])
+-- this should return a 3-tuple (info_hash, info_dict, peer_string)
+get_announce_result fname = do
+    announce_dict <- form_announce_url fname
+    ping_uri <- pure $ get_ping_uri announce_dict False
+    peer_string <- get_peer_string ping_uri
+
+    res <- parse_file fname
+    let peers = extract_peers peer_string
+    let BDict torrent_dict = head res
+    let info_bencode = head $ torrent_dict !!! "info"
+    let BDict info_dict = info_bencode
+    let info_hash = BC.pack $ show $ sha_hash $ bencode_deparser info_bencode
+    pure((info_hash, info_bencode, peers))
+
+
+
