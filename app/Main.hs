@@ -10,7 +10,8 @@ import Bencode
 import Tracker
 import Network.Socket
 import qualified Data.ByteString as BS
-import Data.Word (Word8)
+import Data.Word (Word8, Word16)
+
 import Network.Socket.ByteString (sendAll)
 
 -- Create a socket and connect to a peer
@@ -39,9 +40,10 @@ sendHandshake sock = do
         handshake = BS.concat [BS.singleton (fromIntegral (length protocol)), BS.pack (map fromIntegral (map (fromEnum) protocol)), reserved, infoHash, peerId]
     sendAll sock handshake
 
-main :: IO ()
-main = do
-    sock <- connectToPeer "95.173.217.26" 62993
+
+
+mymain pair = do
+    sock <- connectToPeer (fst $ pair) (fromIntegral $ snd $ pair)
     sendHandshake sock
     putStrLn "Handshake sent"
     -- Further implementation would be needed to handle peer-to-peer communication
