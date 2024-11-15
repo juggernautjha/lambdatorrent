@@ -89,7 +89,7 @@ try:
             begin_int = int.from_bytes(begin_bytes, byteorder='big')
             length_int = int.from_bytes(length_bytes, byteorder='big')
             # xxx = input()
-            logging.info(f"Sending {begin_bytes.hex()} to {(begin_int + length_int):x} of chunk {idx_bytes.hex()} to {client_address}")
+            logging.info(f"Sending {begin_int} to {(begin_int + length_int):x} of chunk {idx_bytes.hex()} to {client_address}")
             response = bytearray()
             response.extend(b'\x00\x00\x00\x00')  # Length prefix placeholder
             response.append(7)  # Message ID for 'piece'

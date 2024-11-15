@@ -174,7 +174,7 @@ download_naive sock idx begin bytes_requested = do
     res <- listen_on_socket sock
     case verify_piece_fr res idx begin bytes_requested of
         True ->  pure (parse_response res 13 (B.length res), begin + max_req_bytes)
-        False -> pure (BC.pack "garbage", 0)
+        False -> pure (BC.pack "", begin)
 
 -- !Download a full piece by repeatedly downloading blocks
 download_full_piece :: Socket -> Int -> PieceTable -> String -> IO PieceTable 
@@ -190,6 +190,7 @@ download_full_piece sock idx pieces_table fname = do
                     else download_blocks next_begin new_acc
             piece_data <- download_blocks 0 B.empty
             let filename = "output/" ++ fname ++ show idx ++ ".dat"
+
             B.writeFile filename piece_data
             case lookup_state idx pieces_table of
                 Just (st, hsh, ln) -> do
@@ -276,12 +277,14 @@ event_loop sock (status, state, expected) info_hash fname current_idx pieces_tab
 
 
 
-run_event_loop :: String -> Socket -> IO ()
-run_event_loop fname sock = do
+
+
+run_event_loop :: String -> String -> Socket -> IO ()
+run_event_loop fname output sock = do
     (a,b,c) <- get_announce_result fname
 
     let pieces_table = init_piece_table b
-    event_loop sock (Fresh, HM.empty, there_id) a "dumb" 0 pieces_table
+    event_loop sock (Fresh, HM.empty, there_id) a output 0 pieces_table
 
 
 -- mymain :: (a,b) -> IO ByteString

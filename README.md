@@ -10,15 +10,15 @@ An attempt at implementing the BitTorrent protocol in Haskell because
 - An implementation of the **Tracker** Protocol, can get a list of peers, and verify hashes.
 - A (possibly very inefficient) implementation of the **Peer Wire** protocol. For some reason TCP connections take a long time to materialize, so we wrote a dead simple echo server to as the proof of concept. It _should_ work with _real_ peers but I haven't verified this. It will work with minimal changes anyway. 
 
-
-### WIP
-
 ### Future Work
 - Make the PWP implementation better. 
-- Put downloaded chunks together. 
-- Maybe figure out seeding. (**Update** : Its figured out).
+- Maybe figure out seeding. (**Update** : Its figured out, it just do not have enough RAM).
 - Magnet link parser because piratebay has moved away from .torrent files. Should be a drop in replacement.  (**Update** : Nope. Requires an understanding of DHTs, and I am retarded).
 
+### Should I
+- Use this? Absolutely not. It is possibly orders of magnitude slower than other clients.
+- Study Haskell? Yes. 
+- Take the JEE? Do you have a choice?
 
 ### Trivia
 - Why is it called λTorrent? If you are asking this you are clearly not an FP appreciator. 
