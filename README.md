@@ -24,3 +24,4 @@ An attempt at implementing the BitTorrent protocol in Haskell because
 - Why is it called λTorrent? If you are asking this you are clearly not an FP appreciator. 
 - What is a monad? A monad is a monoid in the category of endofunctors.
 - Why do you hate GHCI? The circumstances we met in were not conducive to a healthy relationship. For the lack of a better term, GHCI is a memory hog and I managed to fry one of my two precious sticks of RAM some time back. 
+- If you eat enough Saridons, you save money on Redbulls. 
