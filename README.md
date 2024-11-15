@@ -8,14 +8,16 @@ An attempt at implementing the BitTorrent protocol in Haskell because
 ### Current Status
 - Fully functional, monadic **Bencode** parser, written without using any parsing libraries. 
 - An implementation of the **Tracker** Protocol, can get a list of peers, and verify hashes.
+- A (possibly very inefficient) implementation of the **Peer Wire** protocol. For some reason TCP connections take a long time to materialize, so we wrote a dead simple echo server to as the proof of concept. It _should_ work with _real_ peers but I haven't verified this. It will work with minimal changes anyway. 
+
 
 ### WIP
-- Implementing the peer wire protocol. For some reason TCP connections take a long time to materialize.
 
 ### Future Work
+- Make the PWP implementation better. 
 - Put downloaded chunks together. 
-- Maybe figure out seeding. 
-- Magnet link parser because piratebay has moved away from .torrent files. Should be a drop in replacement. 
+- Maybe figure out seeding. (**Update** : Its figured out).
+- Magnet link parser because piratebay has moved away from .torrent files. Should be a drop in replacement.  (**Update** : Nope. Requires an understanding of DHTs, and I am retarded).
 
 
 ### Trivia

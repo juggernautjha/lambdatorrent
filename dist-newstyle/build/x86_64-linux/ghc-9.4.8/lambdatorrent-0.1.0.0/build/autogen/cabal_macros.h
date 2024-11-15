@@ -170,6 +170,16 @@
   (major1) == 2 && (major2) <  1 || \
   (major1) == 2 && (major2) == 1 && (minor) <= 4)
 #endif /* MIN_VERSION_tls */
+/* package unordered-containers-0.2.20 */
+#ifndef VERSION_unordered_containers
+#define VERSION_unordered_containers "0.2.20"
+#endif /* VERSION_unordered_containers */
+#ifndef MIN_VERSION_unordered_containers
+#define MIN_VERSION_unordered_containers(major1,major2,minor) (\
+  (major1) <  0 || \
+  (major1) == 0 && (major2) <  2 || \
+  (major1) == 0 && (major2) == 2 && (minor) <= 20)
+#endif /* MIN_VERSION_unordered_containers */
 /* package uri-encode-1.5.0.7 */
 #ifndef VERSION_uri_encode
 #define VERSION_uri_encode "1.5.0.7"

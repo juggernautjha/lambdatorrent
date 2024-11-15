@@ -26,6 +26,8 @@ import qualified Data.ByteString.Lazy as BL
 import qualified Data.ByteString as BS
 import Data.ByteString (ByteString, unpack)
 import Data.Word (Word16)
+import qualified Crypto.Hash.SHA1 as CHSH
+
 -- import Network.Socket (inet_ntoa, tupleToHostAddress)
 import Data.Bits (shiftL, (.|.))
 
@@ -143,7 +145,7 @@ get_announce_result fname = do
     let BDict torrent_dict = head res
     let info_bencode = head $ torrent_dict !!! "info"
     let BDict info_dict = info_bencode
-    let info_hash = BC.pack $ show $ sha_hash $ bencode_deparser info_bencode
+    let info_hash = CHSH.hash $ bencode_deparser info_bencode
     pure((info_hash, info_bencode, peers))
 
 

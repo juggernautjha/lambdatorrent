@@ -1,3 +1,4 @@
+
 name:                lambdatorrent
 version:             0.1.0.0
 github:              "juggernautjha/lambdatorrent"
@@ -38,7 +39,7 @@ dependencies:
 - data-default-class
 - data-default
 - network
-
+- unordered-containers
 
 
 
