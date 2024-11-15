@@ -4,4 +4,7 @@
 # *.py
 *.ipynb
 *.dat
-dist-newstyle/*
+dist-newstyle/
+*dyn
+*_o
+output/
