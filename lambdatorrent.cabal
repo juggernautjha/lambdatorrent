@@ -26,6 +26,7 @@ library
   exposed-modules:
       Bencode
       Lib
+      Peers
       Tracker
   other-modules:
       Paths_lambdatorrent
