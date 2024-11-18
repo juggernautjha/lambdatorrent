@@ -183,7 +183,7 @@ download_full_piece sock idx pieces_table fname = do
                         then return new_acc
                     else download_blocks next_begin new_acc
             piece_data <- download_blocks 0 B.empty
-            let filename = "output/" ++ fname ++ show idx ++ ".dat"
+            let filename = fname ++ show idx ++ ".dat"
 
             B.writeFile filename piece_data
             case lookup_state idx pieces_table of
