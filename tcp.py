@@ -11,13 +11,18 @@ import hashlib
 import logging
 
 # Configure logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s,%(levelname)s,%(message)s',
+    handlers=[
+        logging.FileHandler("log.csv"),
+        logging.StreamHandler(sys.stdout)
+    ]
+)
 
 
 HOST = '127.0.0.1'  # Localhost
 PORT = eval(sys.argv[1])  # Port to bind to
-
-
 my_id = hashlib.sha1(b'cmprssnenthsst').digest()
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server_socket.bind((HOST, PORT))
@@ -25,8 +30,6 @@ server_socket.listen(1)
 logging.info(f"Server listening on {HOST}:{PORT}...")
 connection, client_address = server_socket.accept()
 logging.info(f"Connected by {client_address}")
-
-
 ids = {
     0: 'choke',
     1: 'unchoke',
@@ -41,9 +44,10 @@ ids = {
 }
 # Receive data from the client
 i  = 0
-try:
-    while True:
-        data = connection.recv(1024)
+while True:
+    data = connection.recv(1024)
+    try:
+        
         #! Code for Handshake
         if data[0] == 19:
             logging.info("handshake received")
@@ -60,6 +64,7 @@ try:
                 response.extend(info_hash)
                 response.extend(my_id)
                 connection.sendall(response)
+                logging.info("handshake sent back")
         
         if data[:4] == b'\x00' * 4:
             logging.info(f"{client_address} sent a keep-alive. echoing.")
@@ -89,7 +94,7 @@ try:
             begin_int = int.from_bytes(begin_bytes, byteorder='big')
             length_int = int.from_bytes(length_bytes, byteorder='big')
             # xxx = input()
-            logging.info(f"Sending {begin_int} to {(begin_int + length_int):x} of chunk {idx_bytes.hex()} to {client_address}")
+            logging.info(f"Sending {begin_int} to {(begin_int + length_int)} of chunk {idx_bytes.hex()} to {client_address}")
             response = bytearray()
             response.extend(b'\x00\x00\x00\x00')  # Length prefix placeholder
             response.append(7)  # Message ID for 'piece'
@@ -103,22 +108,10 @@ try:
             connection.sendall(response)
                 
                 # Construct the piece message to send back
-                
-        
-        
         if data == b'210802':
             logging.info("close signal received. bye.")
             connection.close()
             break
-
-    # if:
-    #     logging.info(data)
-    #     connection.close()
-        # connection.sendall(data)  # Echo the received data back to the client
-except Exception as e:
-    connection.close()
-    logging.info(f"An error occurred: {e}")
-finally:
-    connection.close()
-    server_socket.close()
+    except Exception as e:
+        logging.info(f"An error occurred: {e}")
 
