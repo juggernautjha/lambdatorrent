@@ -14,7 +14,9 @@ An attempt at implementing the BitTorrent protocol in Haskell because
 ```bash
 cabal build
 ```
-- To use the repl, use ```bash
+- To use the repl, use 
+
+```bash
 cabal repl
 ``` 
 
