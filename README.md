@@ -14,10 +14,16 @@ An attempt at implementing the BitTorrent protocol in Haskell because
 ```bash
 cabal build
 ```
-- To use the repl, use ```bash
+- To use the repl, use 
+
+```bash
 cabal repl
-```. This loads all libraries to ghci, can interact with functions. 
+``` 
+
+This loads all libraries to ghci, can interact with functions. 
 - To directly run the tcp demo, open two terminals. In one terminal run
+
+
 ```bash
 python3 tcp.py <port>
 ```
