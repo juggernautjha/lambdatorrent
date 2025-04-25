@@ -1,6 +1,6 @@
 # λtorrent
 
-An attempt at implementing the BitTorrent protocol in Haskell because 
+An attempt at implementing the BitTorrent protocol in Haskell because why not? Also masochism ftw.
 
 ### Current Status
 - Fully functional, monadic **Bencode** parser, written without using any parsing libraries. 
