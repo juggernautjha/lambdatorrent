@@ -35,7 +35,7 @@ and follow the prompts.
 
 ### Future Work
 - Make the PWP implementation better. 
-- Maybe figure out seeding. (**Update** : Its figured out, it just do not have enough RAM).
+- Maybe figure out seeding. (**Update** : Its figured out, I just do not have enough RAM).
 
 
 
